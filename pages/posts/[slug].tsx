@@ -15,8 +15,8 @@ const PostPage: NextPage<{
 }> = ({ post }) => {
   const { author, mainTitle, dateCreated, mainContent } = post;
   console.log("dateCreated", dateCreated);
-  const parsedDate = new Date(dateCreated);
-  const formatedParsedDate = `${parsedDate.getDay()}/${parsedDate.getMonth()}/${parsedDate.getFullYear()}`;
+  const parsedDate = dateCreated.split("-");
+  const formatedParsedDate = `${parsedDate[2]}/${parsedDate[1]}/${parsedDate[0]}`;
   return (
     <HOCPage pageTitle={mainTitle} customClassName="relative">
       <CustomMenu />
