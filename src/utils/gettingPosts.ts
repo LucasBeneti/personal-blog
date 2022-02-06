@@ -1,4 +1,4 @@
-import { GraphQLClient } from "graphql-request";
+import { gql, GraphQLClient } from "graphql-request";
 
 const data_endpoint = "https://graphql.datocms.com/";
 const graphQLClient = new GraphQLClient(data_endpoint, {
@@ -43,7 +43,7 @@ export async function getAllPosts() {
 }
 
 export async function getFullPost(slug: string) {
-  const query = `
+  const query = gql`
         query {
           article(filter: {slug: {eq: "${slug}"}}) {
             id

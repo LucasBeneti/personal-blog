@@ -1,6 +1,5 @@
 import { isHeading, isParagraph } from "datocms-structured-text-utils";
 import type { NextPage } from "next";
-import { useState } from "react";
 import { renderNodeRule, StructuredText } from "react-datocms";
 import CustomMenu from "../../src/components/CustomMenu";
 import HOCPage from "../../src/shared/HOCPage";
@@ -15,22 +14,17 @@ const PostPage: NextPage<{
   };
 }> = ({ post }) => {
   const { author, mainTitle, dateCreated, mainContent } = post;
-  const [darkMode, setDarkMode] = useState(false);
+  console.log("dateCreated", dateCreated);
+  const parsedDate = new Date(dateCreated);
+  const formatedParsedDate = `${parsedDate.getDay()}/${parsedDate.getMonth()}/${parsedDate.getFullYear()}`;
   return (
-    <HOCPage
-      theme={darkMode ? "dark" : "light"}
-      pageTitle={mainTitle}
-      customClassName="relative"
-    >
+    <HOCPage pageTitle={mainTitle} customClassName="relative">
       <CustomMenu />
-      <button onClick={() => setDarkMode(!darkMode)}>
-        Dark mode: {darkMode.toString()}
-      </button>
       <article className="w-3/6">
-        <h1 className="">{mainTitle}</h1>
-        <section>
+        <h1 className="text-4xl bolder">{mainTitle}</h1>
+        <section className="flex gap-4">
           <p>{author}</p>
-          <p>{dateCreated}</p>
+          <p>{formatedParsedDate}</p>
         </section>
         <article className="bg-teal-100 dark:bg-teal-900 text-gray-900 dark:text-zinc-300">
           <StructuredText
@@ -40,16 +34,15 @@ const PostPage: NextPage<{
                 const HeadingTag: any = `h${node.level}`;
 
                 return (
-                  <HeadingTag key={key} className="text-2xl bg-red-400">
+                  <HeadingTag key={key} className="text-2xl">
                     {children}
                   </HeadingTag>
                 );
               }),
               renderNodeRule(isParagraph, ({ node, children, key }) => {
                 const Paragraph = `article`;
-
                 return (
-                  <Paragraph key={key} className="">
+                  <Paragraph key={key} className="py-2">
                     {children}
                   </Paragraph>
                 );
