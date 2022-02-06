@@ -19,17 +19,17 @@ const HOCPage: NextPage<HOCPageType> = ({
 }) => {
   const { dark } = useDarkTheme();
   return (
-    <DarkThemeProvider>
-      <div
-        className={`flex flex-col items-center relative ${"light"} ${customClassName}`}
-      >
-        <CustomHead page="Post" title={pageTitle} />
-        <Head>
-          <title>{pageTitle}</title>
-        </Head>
-        {children}
-      </div>
-    </DarkThemeProvider>
+    <div
+      className={`flex flex-col items-center relative ${
+        dark ? "dark" : ""
+      } ${customClassName}`}
+    >
+      <CustomHead page="Post" title={pageTitle} />
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
+      {children}
+    </div>
   );
 };
 

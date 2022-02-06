@@ -5,6 +5,10 @@ import { useDarkTheme } from "../context/DarkTheme";
 
 const CustomMenu = () => {
   const { dark, setDarkTheme } = useDarkTheme();
+  function handleDarkTheme() {
+    setDarkTheme(!dark);
+    console.log("dark", dark);
+  }
   return (
     <nav className="flex items-center justify flex-wrap p-6 mb-6 gap-4 text-base bg-gray-900 rounded-b-xl rounded-t-none  ">
       <Link href={`/`} passHref>
@@ -21,7 +25,7 @@ const CustomMenu = () => {
         </a>
       </Link>
       <MenuSeparator color={{ light: "text-teal-200" }} />
-      <button onClick={() => setDarkTheme(!dark)} className="text-white">
+      <button onClick={handleDarkTheme} className="text-white">
         {dark ? "Ligth" : "Dark"} theme
       </button>
     </nav>
