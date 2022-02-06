@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { ReactChild, ReactElement } from "react";
+import { DarkThemeProvider, useDarkTheme } from "../context/DarkTheme";
 
 import CustomHead from "../shared/CustomeHead";
 interface HOCPageType {
@@ -16,16 +17,19 @@ const HOCPage: NextPage<HOCPageType> = ({
   pageTitle,
   customClassName,
 }) => {
+  const { dark } = useDarkTheme();
   return (
-    <div
-      className={`flex flex-col items-center relative ${theme} ${customClassName}`}
-    >
-      <CustomHead page="Post" title={pageTitle} />
-      <Head>
-        <title>{pageTitle}</title>
-      </Head>
-      {children}
-    </div>
+    <DarkThemeProvider>
+      <div
+        className={`flex flex-col items-center relative ${"light"} ${customClassName}`}
+      >
+        <CustomHead page="Post" title={pageTitle} />
+        <Head>
+          <title>{pageTitle}</title>
+        </Head>
+        {children}
+      </div>
+    </DarkThemeProvider>
   );
 };
 
