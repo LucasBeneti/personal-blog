@@ -21,7 +21,7 @@ const HOCPage: NextPage<HOCPageType> = ({
   return (
     <div
       className={`flex flex-col items-center relative ${
-        dark ? "dark" : ""
+        dark && "dark"
       } ${customClassName}`}
     >
       <CustomHead page="Post" title={pageTitle} />

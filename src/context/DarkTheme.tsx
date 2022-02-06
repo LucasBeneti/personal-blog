@@ -1,25 +1,31 @@
-import { useContext, createContext, useState } from "react";
+import {
+  useContext,
+  createContext,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
 type DarkThemeType = {
   dark: boolean;
   setDarkTheme: (dark: boolean) => void;
 };
-const ThemeStore = createContext<DarkThemeType>({
-  dark: false,
-  setDarkTheme: () => {},
-});
 
+const DarkTheme = createContext<DarkThemeType>({
+  dark: false,
+  setDarkTheme: (dark) => console.warn("no dark theme provider"),
+});
 export const DarkThemeProvider: React.FC = ({ children }) => {
-  const [dark, setDarkTheme] = useState<boolean>(false);
+  const [dark, setDarkTheme] = useState(false);
   return (
-    <ThemeStore.Provider value={{ dark, setDarkTheme }}>
+    <DarkTheme.Provider value={{ dark, setDarkTheme }}>
       {children}
-    </ThemeStore.Provider>
+    </DarkTheme.Provider>
   );
 };
 
 export const useDarkTheme = () => {
-  const { dark, setDarkTheme } = useContext(ThemeStore);
+  const { dark, setDarkTheme } = useContext(DarkTheme);
   return {
     dark,
     setDarkTheme,
