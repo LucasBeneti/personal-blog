@@ -2,6 +2,7 @@ import { isHeading, isParagraph } from "datocms-structured-text-utils";
 import type { NextPage } from "next";
 import { renderNodeRule, StructuredText } from "react-datocms";
 import CustomMenu from "../../src/components/CustomMenu";
+import { ArticleShell } from "../../src/shared/ArticleShell";
 import HOCPage from "../../src/shared/HOCPage";
 import { getAllPosts, getFullPost } from "../../src/utils/gettingPosts";
 
@@ -15,17 +16,11 @@ const PostPage: NextPage<{
 }> = ({ post }) => {
   const { author, mainTitle, dateCreated, mainContent } = post;
   console.log("dateCreated", dateCreated);
-  const parsedDate = dateCreated.split("-");
-  const formatedParsedDate = `${parsedDate[2]}/${parsedDate[1]}/${parsedDate[0]}`;
+
   return (
     <HOCPage pageTitle={mainTitle} customClassName="relative">
       <CustomMenu />
-      <article className="w-3/6">
-        <h1 className="text-4xl bolder">{mainTitle}</h1>
-        <section className="flex gap-4">
-          <p>{author}</p>
-          <p>{formatedParsedDate}</p>
-        </section>
+      <ArticleShell title={mainTitle} author={author} dateCreated={dateCreated}>
         <article className="bg-teal-100 dark:bg-teal-900 text-gray-900 dark:text-zinc-300">
           <StructuredText
             data={mainContent}
@@ -50,7 +45,7 @@ const PostPage: NextPage<{
             ]}
           />
         </article>
-      </article>
+      </ArticleShell>
     </HOCPage>
   );
 };
