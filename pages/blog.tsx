@@ -12,7 +12,7 @@ type BlogInformation = {
       id: string;
       author: string;
       mainTitle: string;
-      mainContent: any; // deve ter um jeito melhor de tipar isso
+      mainContent: any; // tem que ter um jeito melhor de tipar isso
       dateCreated: string;
     }
   ];
@@ -20,18 +20,20 @@ type BlogInformation = {
 
 const Blog: NextPage<BlogInformation> = ({ ...props }) => {
   return (
-    <HOCPage>
+    <HOCPage pageTitle={`Blog | Lucas Beneti`}>
       <CustomMenu />
-      <section className="flex-col h-100 content-center p-10 container">
-        <h1 className="font-bold text-3xl">Posts criados</h1>
-        {props.allArticles?.map((article) => (
-          <PostCard
-            title={article.mainTitle}
-            slug={article.slug}
-            author={article.author}
-            dateCreated={article.dateCreated}
-          />
-        ))}
+      <section className="flex flex-col p-4">
+        <h1 className="font-nunito font-bold text-4xl">Posts criados</h1>
+        <div className="grid grid-flow-col gap-4 px-10 py-2">
+          {props.allArticles?.map((article) => (
+            <PostCard
+              title={article.mainTitle}
+              slug={article.slug}
+              author={article.author}
+              dateCreated={article.dateCreated}
+            />
+          ))}
+        </div>
       </section>
     </HOCPage>
   );

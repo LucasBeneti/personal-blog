@@ -10,24 +10,28 @@ const CustomMenu = () => {
     console.log("dark", dark);
   }
   return (
-    <nav className="flex items-center justify flex-wrap p-6 mb-6 gap-4 text-base bg-gray-900 rounded-b-xl rounded-t-none">
+    <nav className="flex items-center justify flex-wrap p-6 mb-6 gap-4 text-base bg-gray-900 dark:bg-gray-200 rounded-b-xl rounded-t-none">
       <Link href={`/`} passHref>
-        <a className="font-bold  text-gray-300 hover:text-white">Home</a>
+        <a className="font-sans font-bold text-gray-300 dark:text-gray-900 hover:text-white hover::dark:text-white">
+          Home
+        </a>
       </Link>
       <MenuSeparator color={{ light: "text-teal-200" }} />
       <Link href={`/blog`} passHref>
-        <a className="font-bold  text-gray-300 hover:text-white">Blog</a>
+        <a className="font-sans font-bold text-gray-300 dark:text-gray-900 hover:text-white hover::dark:text-white">
+          Blog
+        </a>
       </Link>
       <MenuSeparator color={{ light: "text-teal-200" }} />
       <Link href={`/contact`} passHref>
-        <a className="font-bold  text-gray-300 hover:text-white">
+        <a className="font-sans font-bold text-gray-300 dark:text-gray-900 hover:text-white hover::dark:text-white">
           Contact Info
         </a>
       </Link>
 
       <button
         onClick={handleDarkTheme}
-        className="text-gray-900 absolute top-5 right-5"
+        className="text-gray-900 dark:text-gray-100 absolute top-5 right-5"
       >
         {dark ? "Ligth" : "Dark"} theme
       </button>

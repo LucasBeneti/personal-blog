@@ -2,7 +2,7 @@ import Head from "next/head";
 
 type CustomHeadeType = {
   currentURL?: string;
-  page: string;
+  page?: string;
   title?: string;
   coverImageURL?: string;
   siteName?: string;
@@ -19,7 +19,7 @@ const CustomHead: React.FC<CustomHeadeType> = ({
 }) => {
   return (
     <Head>
-      <title>{`${page} | ${title}`}</title>
+      <title>{`${page ? `${page} |` : ""}${title}`}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
       <meta name="title" content={title} key="pagetitle" />

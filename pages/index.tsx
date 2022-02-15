@@ -8,7 +8,7 @@ import HOCPage from "../src/shared/HOCPage";
 const Home: NextPage = () => {
   return (
     <DarkThemeProvider>
-      <HOCPage pageTitle="Home Page">
+      <HOCPage pageTitle="Home Page | Lucas Beneti">
         <CustomMenu />
       </HOCPage>
     </DarkThemeProvider>

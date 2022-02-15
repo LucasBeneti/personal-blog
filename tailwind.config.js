@@ -2,12 +2,16 @@ module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        andada: ["Andada Pro", "serif"],
+        nunito: ["Nunito", "sans-serif"],
+      },
+    },
     screens: {
-      xs: { max: "639px" },
-      sm: { max: "767px" },
-      md: { max: "1023px" },
-      lg: { max: "1279px" },
+      sm: { max: "768px" },
+      md: { max: "1024px" },
+      lg: { max: "1280px" },
     },
   },
   plugins: [],

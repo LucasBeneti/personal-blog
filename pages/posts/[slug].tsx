@@ -18,18 +18,17 @@ const PostPage: NextPage<{
   console.log("dateCreated", dateCreated);
 
   return (
-    <HOCPage pageTitle={mainTitle} customClassName="relative">
+    <HOCPage pageTitle={`Post | ${mainTitle}`} customClassName="relative">
       <CustomMenu />
       <ArticleShell title={mainTitle} author={author} dateCreated={dateCreated}>
-        <article className="bg-teal-100 dark:bg-teal-900 text-gray-900 dark:text-zinc-300">
+        <article className="">
           <StructuredText
             data={mainContent}
             customNodeRules={[
               renderNodeRule(isHeading, ({ node, children, key }) => {
                 const HeadingTag: any = `h${node.level}`;
-
                 return (
-                  <HeadingTag key={key} className="text-2xl">
+                  <HeadingTag key={key} className="font-sans text-2xl mb-2">
                     {children}
                   </HeadingTag>
                 );
@@ -37,7 +36,7 @@ const PostPage: NextPage<{
               renderNodeRule(isParagraph, ({ node, children, key }) => {
                 const Paragraph = `article`;
                 return (
-                  <Paragraph key={key} className="py-2">
+                  <Paragraph key={key} className="font-playfair text-lg">
                     {children}
                   </Paragraph>
                 );
@@ -59,7 +58,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
