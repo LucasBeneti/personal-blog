@@ -11,9 +11,11 @@ const Home: NextPage = () => {
     <DarkThemeProvider>
       <HOCPage pageTitle="Home Page | Lucas Beneti">
         <CustomMenu />
-        <div className="flex flex-col text-center max-w-4xl">
-          <h1 className="text-4xl font-nunito font-bold">Personal website</h1>
-          <article className="flex flex-col">
+        <div className="flex flex-col max-w-4xl">
+          <h1 className="text-4xl font-nunito font-bold self-center">
+            Personal website
+          </h1>
+          <article className="flex flex-col ">
             <p className="font-andada text-lg  first-letter:text-4xl">
               Hi! My name is Lucas Silva Beneti, and I'm building this website
               to study{" "}
