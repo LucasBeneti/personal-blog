@@ -3,6 +3,8 @@ import Head from "next/head";
 import { ReactChild, ReactElement } from "react";
 import { DarkThemeProvider, useDarkTheme } from "../context/DarkTheme";
 
+import PersonalCard from "../components/PersonalCard";
+
 import CustomHead from "../shared/CustomeHead";
 interface HOCPageType {
   children?: JSX.Element | JSX.Element[] | React.ReactNode;
@@ -19,9 +21,10 @@ const HOCPage: NextPage<HOCPageType> = ({
 }) => {
   const { dark } = useDarkTheme();
   return (
-    <div className={`${dark && "dark"} ${customClassName}`}>
-      <div className="flex flex-col items-center relative dark:bg-gray-900 text-gray-900 dark:text-zinc-300 h-screen">
+    <div className={`${dark && "dark"} ${customClassName} relative`}>
+      <div className="flex flex-col items-center relative dark:bg-gray-900 text-gray-900 dark:text-zinc-300 h-fit">
         <CustomHead title={pageTitle} />
+        <PersonalCard />
         {children}
       </div>
     </div>
