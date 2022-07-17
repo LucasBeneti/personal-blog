@@ -5,7 +5,7 @@ import { useDarkTheme } from "../context/DarkTheme";
 const PersonalCard = () => {
   const { dark } = useDarkTheme();
   return (
-    <section className="flex flex-col fixed top-64 left-16 bg-gray-200 dark:bg-gray-700 p-4 rounded-lg">
+    <section className="flex flex-col fixed top-64 left-16 bg-gray-200 dark:bg-gray-700 p-4 rounded-lg sm:scale-50">
       <Image
         src={"https://avatars.githubusercontent.com/u/17716465?v=4"}
         alt="Github image"

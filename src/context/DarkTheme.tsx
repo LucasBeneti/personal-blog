@@ -1,10 +1,4 @@
-import {
-  useContext,
-  createContext,
-  useState,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import { useContext, createContext, useState } from "react";
 
 type DarkThemeType = {
   dark: boolean;
