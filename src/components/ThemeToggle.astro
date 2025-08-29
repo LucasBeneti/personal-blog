@@ -1,0 +1,54 @@
+<button id="theme-toggle" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+  <span class="light-icon">💡</span>
+  <span class="dark-icon">🌙</span>
+</button>
+
+<style is:inline>
+  /* Simple styles to show/hide the correct icon */
+  .dark-icon { display: none; }
+  [data-theme='dark'] .dark-icon { display: inline-block; }
+  [data-theme='dark'] .light-icon { display: none; }
+
+  #theme-toggle {
+    background: none;
+    border: 1px solid var(--color-text);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+  }
+</style>
+
+<script>
+  // This function is run on page load
+  const setupThemeToggle = () => {
+    const toggleButton = document.getElementById('theme-toggle');
+
+    if (!toggleButton) {
+      console.error('Theme toggle button not found!');
+      return;
+    }
+
+    toggleButton.addEventListener('click', () => {
+      console.log('clicado!!!')
+      // Determine the new theme
+      const newTheme = document.documentElement.hasAttribute('data-theme') ? 'light' : 'dark';
+
+      // Apply the new theme
+      if (newTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      
+      // Save the user's preference
+      localStorage.setItem('theme', newTheme);
+    });
+  };
+
+  // Run the setup function when the page is ready
+  document.addEventListener('astro:page-load', setupThemeToggle);
+  
+  // Also run on initial load for browsers without View Transitions
+  setupThemeToggle();
+</script>

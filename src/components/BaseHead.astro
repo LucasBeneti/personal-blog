@@ -55,3 +55,24 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<!-- Dark Mode Script -->
+<script is:inline>
+// This script is inlined in the <head> to run before the page renders
+const getTheme = () => {
+	if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+		return localStorage.getItem('theme');
+	}
+	if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		return 'dark';
+	}
+	return 'light';
+};
+
+const theme = getTheme();
+if (theme === 'dark') {
+	document.documentElement.setAttribute('data-theme', 'dark');
+} else {
+	document.documentElement.removeAttribute('data-theme');
+}
+</script>
