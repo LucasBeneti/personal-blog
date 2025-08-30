@@ -1,10 +1,17 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-
 :root {
+  --bg-primary: #f9f9f9;
+  --bg-secondary: #efefef;
+  --bg-tertiary: #e0e0e0;
+
+  /* Text Colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-tertiary: #888888;
+
+  /* Links */
+  --link-color: #007bff;
+  --link-hover: #0056b3;
+
   --accent: #2337ff;
   --accent-dark: #000d8a;
   --black: 15, 18, 25;
@@ -25,6 +32,18 @@
   --gray-gradient: rgba(var(--gray-light), 50%), #121212;
   --box-shadow: 0 2px 6px rgba(var(--gray), 25%),
     0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
+  --bg-primary: #121212;
+  --bg-secondary: #242424;
+  --bg-tertiary: #363636;
+
+  /* Text Colors */
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-tertiary: #757575;
+
+  /* Links */
+  --link-color: #3498db;
+  --link-hover: #2980b9;
 }
 
 @font-face {
@@ -46,11 +65,11 @@ body {
   margin: 0;
   padding: 0;
   text-align: left;
-  background: linear-gradient(var(--gray-gradient)) no-repeat;
+  background-color: var(--bg-primary);
   background-size: 100% 600px;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  color: rgb(var(--gray-dark));
+  color: var(--text-secondary);
   font-size: 20px;
   line-height: 1.7;
 }
@@ -67,7 +86,7 @@ h4,
 h5,
 h6 {
   margin: 0 0 0.5rem 0;
-  color: rgb(var(--black));
+  color: var(--text-primary);
   line-height: 1.2;
 }
 h1 {
@@ -90,10 +109,10 @@ b {
   font-weight: 700;
 }
 a {
-  color: var(--accent);
+  color: var(--link-color);
 }
 a:hover {
-  color: var(--accent);
+  color: var(--link-hover);
 }
 p {
   margin-bottom: 1em;
@@ -124,6 +143,7 @@ code {
 pre {
   padding: 1.5em;
   border-radius: 8px;
+  font-size: 14px;
 }
 pre > code {
   all: unset;
@@ -150,12 +170,12 @@ hr {
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
   }
 
   a {
-    color: #bb86fc;
+    color: var(--link-color);
   }
 
   /* Additional dark mode styling adjustments can be added here */
