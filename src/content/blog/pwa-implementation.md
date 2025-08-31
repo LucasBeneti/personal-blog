@@ -27,7 +27,7 @@ Aqui descrevo um pouco do que é minimanete necessário para tornar seu aplicati
 
 #### manifest.json
 
-Basicamente precisamos de dois arquivos, o manifest.json, que terá alguns dados importantes sobre sua aplicação como name ou short_name, id (anteriormente, se não a start_url era obrigatório, mas agora essa dependência é removida se fornecer o id), e o path dos ícones para serem utilizados nas miniaturas do aplicativo. Boas práticas e mais detalhes desse padrão de arquivo, podem ser encontrados aqui (link para a documentação explicando melhor sobre manifest.json). Mas basicamente o mínimo que devemos ter ficaria parecido com o seguinte:
+Basicamente precisamos de dois arquivos, o manifest.json, que terá alguns dados importantes sobre sua aplicação como name ou `short_name`, `id` (anteriormente, se não a start_url era obrigatório, mas agora essa dependência é removida se fornecer o id), e o path dos ícones para serem utilizados nas miniaturas do aplicativo. Boas práticas e mais detalhes desse padrão de arquivo, podem ser encontrados [nesse artigo](https://web.dev/articles/add-manifest?hl=pt-br) bem útil sobre esse arquivo. (link para a documentação explicando melhor sobre manifest.json). Mas basicamente o mínimo que devemos ter ficaria parecido com o seguinte:
 
 ```JSON
 {
@@ -52,16 +52,16 @@ Basicamente precisamos de dois arquivos, o manifest.json, que terá alguns dados
 
 ```
 
-O name é utilizado na instalação do aplicativo e o short_name é o que vai aparecer na tela inicial do usuário, já que o espaço é reduzido. Outro ponto importante, você deve dar pelo menos um desses nomes (qualquer um), pois é importante para os sistemas operacionais que a aba do Chromium (que é o que roda sua aplicação), tenha um título, para evitar alguns tipos de golpes.
+O `name` é utilizado na instalação do aplicativo e o `short_name` é o que vai aparecer na tela inicial do usuário, já que o espaço é reduzido. Outro ponto importante, você deve dar pelo menos um desses nomes (qualquer um), pois é importante para os sistemas operacionais que a aba do Chromium (que é o que roda sua aplicação), tenha um título, para evitar alguns tipos de golpes.
 
-O atributo start_url tem o objetivo de falar qual é a página que o usuário deve ser colocado ao abrir o aplicativo. Ele evita que o usuário seja redirecionado para qualquer aba em que ele estava quando baixou e instalou seu PWA. E mais recentemente, temos um outro atributo, o id que efetivamente substitui o start_url e remove a obrigatoriedade dele. Esse id é uma forma do navegador identificar seu PWA, e o melhor valor para esse atributo, pode ser fornecido pelo Chrome Devtools mesmo. Para mais detalhes, pode ler mais aqui.
+O atributo `start_url` tem o objetivo de falar qual é a página que o usuário deve ser colocado ao abrir o aplicativo. Ele evita que o usuário seja redirecionado para qualquer aba em que ele estava quando baixou e instalou seu PWA. E mais recentemente, temos um outro atributo, o id que efetivamente substitui o `start_url` e remove a obrigatoriedade dele. Esse id é uma forma do navegador identificar seu PWA, e o melhor valor para esse atributo, pode ser fornecido pelo Chrome Devtools mesmo. Para mais detalhes e entender o motivo de usar e qual o melhor `id` para colocar nesse atributo, pode dar uma olhada [aqui](https://developer.chrome.com/docs/capabilities/pwa-manifest-id?hl=pt-br), pode ler mais aqui.
 
 Os ícones devem ser fornecidos em pelo menos nos tamanhos 192x192 e 512x512, pois é o que o Chromium precisa para lidar com ícones do seu aplicativo em diferentes telas. E o de 512px, é o que aparece na splash screen, quando seu aplicativo é carregado.
-Há alguns outros atributos que são interessantes serem colocados no arquivo, com o display, que é o modo com que esse aplicativo será carregado para o usuário e o background_color, que é a cor de fundo para quando seu app é carregado no dispositivo do usuário (para não dar aquele “flicker” de tela branca, para depois mudar para a cor base do fundo do seu aplicativo). Esses e outros atributos podem ser encontrados [aqui](https://web.dev/articles/add-manifest?hl=pt-br#display).
+Há alguns outros atributos que são interessantes serem colocados no arquivo, com o display, que é o modo com que esse aplicativo será carregado para o usuário e o `background_color`, que é a cor de fundo para quando seu app é carregado no dispositivo do usuário (para não dar aquele “flicker” de tela branca, para depois mudar para a cor base do fundo do seu aplicativo). Esses e outros atributos podem ser encontrados [aqui](https://web.dev/articles/add-manifest?hl=pt-br#display).
 
 #### service-worker.js
 
-Além do arquivo manifest.json, em alguns casos a implementação de um service-worker se faz útil, pois ele funciona como um “proxy” programável entre sua aplicação e a rede, rodando em background pelo browser, capaz de realizar diversas tarefas. Desse modo ele pode fazer algumas coisas, como:
+Além do arquivo `manifest.json`, em alguns casos a implementação de um service-worker se faz útil, pois ele funciona como um “proxy” programável entre sua aplicação e a rede, rodando em background pelo browser, capaz de realizar diversas tarefas. Desse modo ele pode fazer algumas coisas, como:
 
 - suporte offline, interceptando requisições de navegação e outros tipos e servindo páginas e/ou dados cached, ao invés de mostrar a página de erro do browser;
 - performance e caching, salvando requisições e dados que podem ser servidos posteriormente;
@@ -72,7 +72,7 @@ O service-worker faz parte de uma API Web Workers, e basicamente mantém sempre 
 
 Uma boa prática é adicionar event listeners para esses eventos e fazer algumas coisas antes deles, como por exemplo organizar os arquivos que devem ser cacheados antes da instalação do service-worker. No caso do evento de activate, é uma boa prática limpar o cache de arquivos antigos e sem uso, para dar espaço para os novos e nesse mesmo momento, fazer o “claim”, ou obter o controle, de todas as páginas do escopo deste service-worker.
 
-Outro evento interessante que podemos adicionar um listener é o evento de fetch, que é disparado sempre que ocorre uma requisição. Ouvindo esse evento, podemos fazer todo tipo de coisa, como responder ao usuário com a rota do arquivo da sua aplicação que contém o Javascript que irá lidar com o routing da sua aplicação. Podemos também fazer o cache das respostas de requisições (que não sejam de navegação, é claro), para o caso de quisermos esses dados disponíveis para o funcionamento offline da aplicação.
+Outro evento interessante que podemos adicionar um listener é o evento de `fetch`, que é disparado sempre que ocorre uma requisição. Ouvindo esse evento, podemos fazer todo tipo de coisa, como responder ao usuário com a rota do arquivo da sua aplicação que contém o Javascript que irá lidar com o routing da sua aplicação. Podemos também fazer o cache das respostas de requisições (que não sejam de navegação, é claro), para o caso de quisermos esses dados disponíveis para o funcionamento offline da aplicação.
 Mas o ponto é que o funcionamento do service-worker consiste em, em seu life-cycle, lançar alguns eventos em sequência (ou sempre que o usuário interage com a aplicação), e reagir a esses eventos, de forma programática para atingir alguns objetivos.
 
 Para o caso da minha aplicação, era importante interceptar as requisições de navegação para que a biblioteca de navegação que usei, funcionasse corretamente (considerando o funcionamento de um SPA). E fora isso, um ou outro cache de respostas de requisições HTTP, mais a fim de testes para melhoria de performance da aplicação. No trecho de código abaixo, é possível ver uma parte do arquivo service-worker.js da minha aplicação até o momento:
