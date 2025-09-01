@@ -1,7 +1,7 @@
 ---
 title: 'Implementando meu primeiro PWA'
 description: 'Aqui apresento como implementei meu primeiro PWA e os motivos de ter feito isso.'
-pubDate: 'AUg 28 2025'
+pubDate: 'Aug 28 2025'
 heroImage: '../../assets/blog-placeholder-1.jpg'
 ---
 
