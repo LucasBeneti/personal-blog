@@ -64,7 +64,7 @@ Há alguns outros atributos que são interessantes serem colocados no arquivo, c
 
 Além do arquivo `manifest.json`, em alguns casos a implementação de um service-worker se faz útil, pois ele funciona como um “proxy” programável entre sua aplicação e a rede, rodando em background pelo browser, capaz de realizar diversas tarefas. Desse modo ele pode fazer algumas coisas, como:
 
-- suporte offline, interceptando requisições de navegação e outros tipos e servindo páginas e/ou dados cached, ao invés de mostrar a página de erro do browser;
+- suporte offline, interceptando requisições de navegação e outros tipos e servindo páginas e/ou dados _cached_, ao invés de mostrar a página de erro do browser;
 - performance e caching, salvando requisições e dados que podem ser servidos posteriormente;
   notificações push e background sync, pois consegue reagir a notificações mesmo se o app não estiver aberto e até submeter
 - formulários após uma reconexão com a internet (se esse for o caso);
