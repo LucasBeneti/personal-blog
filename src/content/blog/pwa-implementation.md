@@ -2,15 +2,16 @@
 title: 'Implementando meu primeiro PWA'
 description: 'Aqui apresento como implementei meu primeiro PWA e os motivos de ter feito isso.'
 pubDate: 'Aug 28 2025'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+updatedDate: 'Sep 1 2025'
+heroImage: '../../assets/hero-image-pwa.png'
 ---
 
-### TL;DR
+#### TL;DR
 
-- queria que o app fosse próximo como um aplicativo, sem ter que implementar efetivamente um aplicativo
-- o app pode funcionar sem internet
-- os dados do usuário ficam todos locais (literalmente no localStorage)
-- queria entender melhor como isso funciona, por curiosidade e ver se a utilidade é essa mesmo
+- queria que o app fosse próximo como um aplicativo, sem ter que implementar efetivamente um aplicativo;
+- o app pode funcionar sem internet;
+- como os dados do usuário ficam todos locais (localStorage), a aplicação poderia muito bem rodar sem internet;
+- queria entender o que é necessário para funcionar e realmente implementar meu primeiro PWA;
 
 ### O que é um PWA e para o que ele serve?
 
