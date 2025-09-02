@@ -72,6 +72,11 @@ body {
   color: var(--text-secondary);
   font-size: 18px;
   line-height: 1.7;
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 main {
   width: 720px;
